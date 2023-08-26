@@ -1,12 +1,18 @@
-class CustomAPIError extends Error {
-  constructor(message, statusCode) {
-    super(message)
-    this.statusCode = statusCode
-  }
-}
+import express from 'express';
 
-const createCustomError = (msg, statusCode) => {
-  return new CustomAPIError(msg, statusCode)
-}
+import {
+  getAllTasks,
+  createTask,
+  getTask,
+  updateTask,
+  deleteTask,
+  // editTask,
+} from '../controllers/tasks';
 
-module.exports = { createCustomError, CustomAPIError }
+const router = express.Router();
+
+router.route('/').get(getAllTasks).post(createTask);
+router.route('/:id').get(getTask).patch(updateTask).delete(deleteTask);
+// .put(editTask)
+
+export default router;
