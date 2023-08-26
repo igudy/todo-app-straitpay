@@ -1,4 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: rgb(248 250 252);
+}
+.Toastify__toast {
+  border-radius: 4px;
+}
+
+.Toastify__toast--success {
+  background-color: #4caf50;
+}
+
+.Toastify__toast-body {
+  font-size: 14px;
+  color: #ffffff;
+}
