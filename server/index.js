@@ -13,9 +13,9 @@ app.use('/api/v1/tasks', tasks)
 app.use(notFound)
 app.use(errorHandlerMiddleware)
 
-
 // middleware
-
+// Enable CORS for all origins
+app.use(cors());
 
 app.use(express.json());
 

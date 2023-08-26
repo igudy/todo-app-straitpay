@@ -4,4 +4,4 @@ function errorHandlerMiddleware(err, req, res, next) {
   return res.status(err.statusCode || 500).json({ msg: err.message });
 }
 
-module.exports = errorHandlerMiddleware;
+export default errorHandlerMiddleware
