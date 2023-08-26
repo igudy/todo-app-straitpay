@@ -1,6 +1,6 @@
 import express from 'express';
 const app = express();
-import db from './db/connect';
+import connectDB from './db/connect';
 import dotenv from 'dotenv'
 dotenv.config();
 import cors from cors
@@ -20,4 +20,16 @@ app.use(errorHandlerMiddleware)
 app.use(express.json());
 
 // Assigning port value
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 4000
+
+// Try and catch for listening to server
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGO_URI)
+    app.listen(port, console.log(`Server is listening on port ${port}...`))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+start()
