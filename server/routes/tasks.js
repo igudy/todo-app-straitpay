@@ -7,7 +7,7 @@ import {
   updateTask,
   deleteTask,
   // editTask,
-} from '../controllers/tasks';
+} from '../controllers/tasks.js';
 
 const router = express.Router();
 

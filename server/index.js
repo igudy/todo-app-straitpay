@@ -1,14 +1,14 @@
 import express from 'express';
 const app = express();
-import connectDB from './db/connect';
+import connectDB from './db/connect.js';
 import dotenv from 'dotenv'
 dotenv.config();
-import cors from cors
-import notFound from './middleware/not-found'
-import errorHandlerMiddleware from './middleware/error-handler'
+import cors from 'cors'
+import notFound from './middleware/not-found.js'
+import errorHandlerMiddleware from './middleware/error-handler.js'
 
 // routes
-import tasks from './routes/tasks'
+import tasks from './routes/tasks.js'
 app.use('/api/v1/tasks', tasks)
 app.use(notFound)
 app.use(errorHandlerMiddleware)

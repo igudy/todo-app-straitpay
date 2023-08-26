@@ -1,6 +1,6 @@
-import Task from '../models/Task';
-import asyncWrapper from '../middleware/async';
-import { createCustomError } from '../errors/custom-error';
+import Task from '../models/Task.js';
+import asyncWrapper from '../middleware/async.js';
+import { createCustomError } from '../errors/custom-error.js';
 
 export const getAllTasks = asyncWrapper(async (req, res) => {
   const tasks = await Task.find({});
