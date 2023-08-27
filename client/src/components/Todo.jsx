@@ -140,7 +140,6 @@ const Todo = () => {
               <p className="text-[40px] font-extrabold my-[-10px]">{currentTime}</p>
             </div>
             <div className="my-[90px]"></div>
-            <div className="mx-[13px] mt-5">
               
               {/* Form to submit task */}
               <form onSubmit={handleAddTask}>
@@ -148,7 +147,7 @@ const Todo = () => {
                   <input
                     type="text"
                     id="task"
-                    className="block p-2 text-[#888888] border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:border-green-300  h-[40px] w-[250px]"
+                    className="block p-2 text-[#888888] border border-gray-300 rounded-lg bg-gray-50 mx-5 focus:outline-none focus:border-green-300  h-[40px] w-[250px]"
                     placeholder="Add Task"
                     value={taskName}
                     onChange={(e) => setTaskName(e.target.value)}
@@ -159,7 +158,9 @@ const Todo = () => {
                 </div>
               </form>
 
+            <div className="bg-gray-50 mt-6 px-2 py-2 rounded-xl shadow-lg shadow-indigo-500/20">
               {/* Tasks */}
+
               {tasks.map((task) => (
                 <div
                   className="flex flex-wrap mt-7 bg-white  border-2 border-gray-500 h-[50px] w-[330] hover:border-hidden rounded-xl shadow-lg shadow-indigo-500/20"
@@ -169,12 +170,12 @@ const Todo = () => {
                     <p className="text-black-300">{task?.name}</p>
                   </div>
 
-                  <div className="flex space-x-4 ml-auto mt-3">
+                  <div className="flex flex-wrap space-x-4 ml-auto mt-3">
                     <button
                       onClick={() => navigate(`/edit/${task._id}`)}
                       className="focus:outline-none"
                     >
-                      <img src={Edit} className="h-[20px] mb-[25px] width-[20px]" alt="Edit" />
+                      <img src={Edit} className="h-[20px]  mb-[25px] width-[20px]" alt="Edit" />
                     </button>
                     <img
                       src={Delete}
@@ -185,6 +186,7 @@ const Todo = () => {
                   </div>
                 </div>
               ))}
+
             </div>
           </div>
         </div>
