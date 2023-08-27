@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Todo = () => {
   const [currentTime, setCurrentTime] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true); // Set initial loading state to true
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [taskName, setTaskName] = useState("");
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Todo = () => {
       setError(null);
 
       try {
-        const response = await fetch("http://localhost:3001/api/v1/tasks");
+        const response = await fetch("https://todo-api-9udq.onrender.com/api/v1/tasks");
 
         if (!response.ok) {
           throw new Error("Error fetching tasks");
@@ -31,10 +31,10 @@ const Todo = () => {
 
         const data = await response.json();
         setTasks(data.tasks);
-        setLoading(false); // Set loading to false once data is loaded
+        setLoading(false);
       } catch (error) {
         setError("Error fetching tasks");
-        setLoading(false); // Set loading to false in case of an error
+        setLoading(false);
       }
     };
 
@@ -88,7 +88,7 @@ const Todo = () => {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`http://localhost:3001/api/v1/tasks/${taskId}`, {
+      const response = await fetch(`https://todo-api-9udq.onrender.com/api/v1/tasks/${taskId}`, {
         method: "DELETE",
       });
 
