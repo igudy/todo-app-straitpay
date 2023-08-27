@@ -13,11 +13,7 @@ module.exports = {
         'space-grotesk': ['Space Grotesk', 'sans-serif'],
       },
     },
-	//   extend: {
-	// 	  fontfamily: {
-	// 		  'space-grotesk': ['Space Grotesk', 'sans']
-	// 	  },
-	// },
+	// Written by Igudy
   },
   plugins: [],
 }
