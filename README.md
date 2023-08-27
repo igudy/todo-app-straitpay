@@ -11,3 +11,5 @@ PORT=3001
 
 For Frontend:
 1. Use the command "npm run dev" to start your client side app
+![Todo app](https://github.com/igudy/todo-app-straitpay/assets/42493491/90c81eb7-b370-424c-b909-90a98528a0ae)
+![Todo edit page](https://github.com/igudy/todo-app-straitpay/assets/42493491/deba4e0b-80ec-49db-9c4a-cafd3af21f77)
