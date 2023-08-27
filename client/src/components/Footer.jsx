@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react"
+// import { getYear } from "date-fns"
 
-const Footer = () => {
+const footer = () => {
+  // const today = new Date()
+  // const currentYear = getYear(today)
+
   return (
-    <div>Footer</div>
+    <div>
+      <div className="font-[poppins] p-4 text-center bg-slate-900">
+          Igudy (IG THE CODE SLINGER)
+      </div>
+    </div>
   )
 }
 
-export default Footer
+export default footer
