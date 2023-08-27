@@ -22,6 +22,10 @@ app.use(errorHandlerMiddleware)
 // Assigning port value
 const port = process.env.PORT || 4000
 
+app.get('/', (req, res) => {
+  res.send('<h1>Todo app by Igunma Goodness</h1></h1>');
+});
+
 // Try and catch for listening to server
 const start = async () => {
   try {
