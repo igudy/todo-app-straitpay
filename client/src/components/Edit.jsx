@@ -15,7 +15,7 @@ const Edit = () => {
     const fetchTask = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/v1/tasks/${taskId}`
+          `https://todo-api-9udq.onrender.com/api/v1/tasks/${taskId}`
         );
 
         if (!response.ok) {
@@ -38,7 +38,7 @@ const Edit = () => {
     setLoading(false)
 
     try {
-      const response = await fetch(`http://localhost:3001/api/v1/tasks/${taskId}`, {
+      const response = await fetch(`https://todo-api-9udq.onrender.com/api/v1/tasks/${taskId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'

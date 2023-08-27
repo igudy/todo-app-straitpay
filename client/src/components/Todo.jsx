@@ -23,7 +23,7 @@ const Todo = () => {
       setError(null);
 
       try {
-        const response = await fetch("http://localhost:3001/api/v1/tasks");
+        const response = await fetch("https://todo-api-9udq.onrender.com/api/v1/tasks");
 
         if (!response.ok) {
           throw new Error("Error fetching tasks");
@@ -60,7 +60,7 @@ const Todo = () => {
     try {
       setError(null);
 
-      const response = await fetch("http://localhost:3001/api/v1/tasks", {
+      const response = await fetch("https://todo-api-9udq.onrender.com/api/v1/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -88,7 +88,7 @@ const Todo = () => {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`http://localhost:3001/api/v1/tasks/${taskId}`, {
+      const response = await fetch(`https://todo-api-9udq.onrender.com/api/v1/tasks/${taskId}`, {
         method: "DELETE",
       });
 
