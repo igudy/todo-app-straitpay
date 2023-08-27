@@ -10,8 +10,7 @@ module.exports = {
     },
 	  extend: {
 		  fontfamily: {
-			  'space-grotesk': ['Space Grotesk', 'sans'],
-			  'DM-Sans': ['DM Sans', 'sans'],
+			  'space-grotesk': ['Space Grotesk', 'sans']
 		  },
 	},
   },
