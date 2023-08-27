@@ -6,9 +6,8 @@ import Edit from "../assets/edit.png";
 import { format } from "date-fns";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify"; // Import react-toastify
-
-import "react-toastify/dist/ReactToastify.css"; // Import the CSS for styling toast notifications
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Todo = () => {
   const [currentTime, setCurrentTime] = useState("");
@@ -76,10 +75,10 @@ const Todo = () => {
       setTaskName("");
       const jsonData = await response.json();
       setTasks((prevTasks) => [...prevTasks, jsonData.task]);
-      toast.success("Task added successfully!"); // Display success toast
+      toast.success("Task added successfully!");
     } catch (error) {
       setError("Error adding task");
-      toast.error("Error adding task!"); // Display error toast
+      toast.error("Error adding task!");
     }
   };
 
@@ -97,22 +96,18 @@ const Todo = () => {
         throw new Error("Error deleting task");
       }
 
-      // task._id !== taskId is a comparison condition. It checks if the _id of the current task is not equal (!==) to the taskId. In other words, it checks if the current task is not the one you want to delete.
-
-      // If the condition task._id !== taskId is true for a particular task, it means that the task's _id is different from the taskId, and that task will be included in the new array created by filter.
-
       setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
-      toast.success("Task deleted successfully"); // Display success toast
+      toast.success("Task deleted successfully");
     } catch (err) {
       setError(err);
       setLoading(false);
-      toast.error("Error deleting task!"); // Display error toast
+      toast.error("Error deleting task!");
     }
   };
 
   return (
     <>
-      <div className="font-['space-grotesk']">
+      <div className="font-space-grotesk">
         {error && <>{error}</>}
         <div className="flex my-5 justify-center">
           <p className="font-bold text-[50px] text-[#007FDB]">Todo</p>
@@ -129,6 +124,7 @@ const Todo = () => {
             </div>
             <div className="my-[90px]"></div>
             <div className="mx-[13px] mt-5">
+              
               {/* Form to submit task */}
               <form onSubmit={handleAddTask}>
                 <div className="flex mt-6">
@@ -176,6 +172,7 @@ const Todo = () => {
           </div>
         </div>
       </div>
+      <Footer />
       <ToastContainer /> {/* Add ToastContainer here */}
     </>
   );

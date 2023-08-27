@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import Wallpaper from "../assets/rec.png"
-import Refresh from "../assets/refresh.png"
 import { useParams, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
@@ -50,10 +49,7 @@ const Edit = () => {
       if (!response.ok) {
         throw new Error("Error updating task");
       }
-
       toast.success("Task updated successfully!")
-
-      navigate("/")
     } catch (err) {
       setError(err)
       setLoading(false)
@@ -62,8 +58,7 @@ const Edit = () => {
 
   return (
     <>
-      <ToastContainer />
-      <div className="font-['space-grotesk']">
+      <div className="font-space-grotesk">
         <div className="flex my-5 justify-center">
           <p className="font-bold text-[50px] text-[#007FDB]">Edit Task</p>
         </div>
@@ -83,12 +78,8 @@ const Edit = () => {
                     value={taskName}
                     onChange={(e) => setTaskName(e.target.value)}
                   />
-                  <button type="submit" className="focus:outline-none">
-                    <img
-                      src={Refresh}
-                      className="h-[30px] hover:border-green-400 rounded-xl shadow-lg border-x-4 border-y-4 bg-gray-100  shadow-indigo-500/20 bg-opacity-10 w-[30px] mx-2 my-[-2px]"
-                      alt="Refresh"
-                    />
+                  <button type="submit" className="focus:outline-none flex  my-1 mx-2 px-3 border-2 ml-2 border-gray-500 rounded-xl shadow-lg shadow-indigo-500/20 cursor-pointer">
+                      Update
                   </button>
                 </div>
               </form>
@@ -96,9 +87,9 @@ const Edit = () => {
 
               {/* Tasks */}
               <div className="flex mt-7 bg-white  border-2 border-gray-500 h-[70px] w-[330] hover:border-hidden rounded-xl shadow-lg shadow-indigo-500/20">
-                <div className="flex space-x-4 mx-auto mt-3">
+                <div className="flex space-x-4 mx-auto my-2">
                   <button
-                    onClick={() => navigate(`/`)} // Assuming you have imported 'useNavigate' as  'navigate'
+                    onClick={() => navigate(`/`)} 
                     className="focus:outline-none"
                   >
                     Back to home
@@ -109,6 +100,7 @@ const Edit = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   )
 }

@@ -7,12 +7,17 @@ module.exports = {
       md: "768px",
       lg: "976px",
       xl: "1440px",
+	  },
+	extend: {
+      fontFamily: {
+        'space-grotesk': ['Space Grotesk', 'sans-serif'],
+      },
     },
-	  extend: {
-		  fontfamily: {
-			  'space-grotesk': ['Space Grotesk', 'sans']
-		  },
-	},
+	//   extend: {
+	// 	  fontfamily: {
+	// 		  'space-grotesk': ['Space Grotesk', 'sans']
+	// 	  },
+	// },
   },
   plugins: [],
 }
