@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios"
 import Wallpaper from "../assets/rec.png"
 import Add from "../assets/add-button.png"
 import Delete from "../assets/delete.png"
@@ -17,53 +16,55 @@ const Todo = () => {
     const [taskName, setTaskName] = useState("")
     const navigate = useNavigate()
 
-      useEffect(() => {
-    const fetchTasks = async () => {
-      setLoading(true)
-      setError(null)
+  useEffect(() => {
+  const fetchTasks = async () => {
+    setLoading(true);
+    setError(null);
 
-      try {
-          const response = await fetch("http://localhost:3001/api/v1/tasks")
-          
-          const jsonData = repsonse.json();
-          setTasks(jsonData)
-          console.log(jsonData)
-        // setTasks(response?.data?.tasks)
-        setLoading(false)
-      } catch (error) {
-        setError("Error fetching tasks")
-        setLoading(false)
+    try {
+      const response = await fetch("http://localhost:3001/api/v1/tasks");
+      
+      if (!response.ok) {
+        throw new Error("Error fetching tasks");
       }
+
+      const data = await response.json();
+      setTasks(data.tasks);
+      setLoading(false);
+    } catch (error) {
+      setError("Error fetching tasks");
+      setLoading(false);
     }
+  };
 
-    fetchTasks()
-      }, []) //dependency array, loads once the page renders 
+  fetchTasks();
+}, []);
 
+    
     useEffect(() => {
-    const interval = setInterval(() => {
-    const now = new Date()
-    setCurrentTime(format(now, "h:mm a"))
-    }, 1000)
+        const interval = setInterval(() => {
+        const now = new Date()
+        setCurrentTime(format(now, "h:mm a"))
+        }, 1000)
 
     return () => clearInterval(interval)
     }, [])
 
     const today = new Date()
     const formattedDate = format(today, "MMMM d, yyyy")
-    const secondFormattedDate = format(today, "MMMM d")
     const dayOfWeek = format(today, "EEEE")
 
     
     // Handle adding a new task
     const handleAddTask = async (e) => {
     e.preventDefault()
-
     try {
-      // setLoading(true)
+      setLoading(true)
       setError(null)
 
       const response = await fetch("http://localhost:3000/api/v1/tasks", {
-        name: taskName,
+            method: "POST",
+            name: taskName,
       })
 
     setTaskName("")
@@ -79,25 +80,42 @@ const Todo = () => {
 
     // Handle Delete Task
     const handleDeleteTask = async (taskId) => {
-    try {
-      setLoading(true)
-      setError(null)
+        try {
+            setLoading(true);
+            setError(null)
 
-      await axios.delete(`http://localhost:3000/api/v1/tasks/${taskId}`)
+            const response = await fetch(`http://localhost:3000/api/v1/tasks/${taskId}`, {
+                method: "DELETE"
+            })
 
-      setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId))
-      toast.success("Task deleted successfully!")
-    } catch (error) {
-      setError("Error deleting task")
+            if (!response.ok) {
+                 throw new Error('Error deleting task');
+            }
+
+            //task._id !== taskId is a comparison condition. It checks if the _id of the current task is not equal (!==) to the taskId. In other words, it checks if the current task is not the one you want to delete.
+
+            // If the condition task._id !== taskId is true for a particular task, it means that the task's _id is different from the taskId, and that task will be included in the new array created by filter.
+
+            setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId))
+            toast.success("Task deleted successfully")
+        } catch (err) {
+            setError(err)
+            setLoading(false)
+        }
     }
-  }
 
   return (
         <>
-      <div className="font-['poppins']">
+      <div className="font-['space-grotesk']">
+              {error && <>
+                {error}
+              </>
+              }
         <div className="flex my-5 justify-center">
           <p className="font-bold text-[50px] text-[#007FDB]">Todo</p>
-        </div>
+              </div>
+
+
 
         <div className="flex justify-center">
           <div className="bg-white h-[240px] w-[350px] shadow-lg shadow-indigo-500/40">
@@ -144,8 +162,15 @@ const Todo = () => {
                   key={task?._id}
                 >
                   <div className="mt-3 px-3">
-                    <p className="text-black-300">{task?.name}</p>
-                  </div>
+                          <p className="text-black-300">{task?.name}
+                          </p>
+                      </div>
+                      
+                    {/* {loading && <>
+                    <h1>
+                    Loading...
+                    </h1>
+                    </>} */}
 
                   <div className="flex space-x-4 ml-auto mt-3">
                     <button
