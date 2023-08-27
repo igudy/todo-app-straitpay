@@ -38,7 +38,7 @@ const Edit = () => {
     setLoading(false)
 
     try {
-      const response = await fetch(`http://localhost:3001/api/v1/tasks/${taskId}`, {
+      const response = await fetch(`https://todo-api-9udq.onrender.com/api/v1/tasks/${taskId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
@@ -49,6 +49,7 @@ const Edit = () => {
       if (!response.ok) {
         throw new Error("Error updating task");
       }
+      
       toast.success("Task updated successfully!")
     } catch (err) {
       setError(err)
