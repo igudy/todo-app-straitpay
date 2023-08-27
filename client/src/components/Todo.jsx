@@ -4,7 +4,6 @@ import Add from "../assets/add-button.png";
 import Delete from "../assets/delete.png";
 import Edit from "../assets/edit.png";
 import { format } from "date-fns";
-import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -85,7 +84,6 @@ const Todo = () => {
   // Handle Delete Task
   const handleDeleteTask = async (taskId) => {
     try {
-      setLoading(true);
       setError(null);
 
       const response = await fetch(`https://todo-api-9udq.onrender.com/api/v1/tasks/${taskId}`, {
@@ -160,7 +158,6 @@ const Todo = () => {
 
             <div className="bg-gray-50 mt-6 px-2 py-2 rounded-xl shadow-lg shadow-indigo-500/20">
               {/* Tasks */}
-
               {tasks.map((task) => (
                 <div
                   className="flex flex-wrap mt-7 bg-white  border-2 border-gray-500 h-[50px] w-[330] hover:border-hidden rounded-xl shadow-lg shadow-indigo-500/20"
